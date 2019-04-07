@@ -13,6 +13,7 @@ var express = require('express'),
             if(err){
                 console.log(err);
             }
+            
             if(req.body.rating){
                 console.log(req.body.rating);
                 var author = {
@@ -23,6 +24,7 @@ var express = require('express'),
                 var rating={
                     rating: req.body.rating,
                     author: author,
+                    camp_id: req.params.id
                 };
                 console.log(rating);
                 Rating.create(rating,function(err,userRating){
@@ -46,4 +48,5 @@ var express = require('express'),
             }
         })
     });
-    module.exports = router;
+
+   module.exports = router;

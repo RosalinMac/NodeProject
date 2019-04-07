@@ -33,15 +33,15 @@ router.get("/campgrounds",(req,res)=>{   // show all of the campgrounds
 });
 
 //NEW route-this route should be declared before show route
-router.get("/campground/new",middleware.requireLogin,(req,res)=>{  //route to show the form tht sends data to post route when submitting new campground
-    res.render("campgrounds/new"); //render a form
-});
+// router.get("/campground/new",middleware.requireLogin,(req,res)=>{  //route to show the form tht sends data to post route when submitting new campground
+//     res.render("campgrounds/new"); //render a form
+// });
 
 //SHOW route -show info about one campground
 router.get("/campgrounds/:id", function(req,res){
     //find the campground with provided Id
     // console.log(req.params.id);
-    Campground.findById(req.params.id).populate("comments","ratings").exec(function(err,foundCampground){
+    Campground.findById(req.params.id).populate(["ratings","comments"]).exec(function(err,foundCampground){
             if(err){
                 console.log(err);
             }else{
@@ -60,7 +60,7 @@ router.post("/campgrounds",middleware.checkAuthorization,upload.single('Ifile'),
     var name=req.body.campground//get data from form and add to campground array
     var image= 'http://localhost:8080/images/'+ req.file.originalname
     var desc=req.body.desc; 
-    
+ //var price=req.body.price;
      var author = {
          id: req.userData.userID,
          username: req.userData.username

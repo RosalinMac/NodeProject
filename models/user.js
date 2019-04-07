@@ -12,7 +12,8 @@ var UserSchema = new mongoose.Schema({
     }],
     ratings: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Rating'
+        ref: 'Rating',
+        minItems: 1
     }]
 });
 

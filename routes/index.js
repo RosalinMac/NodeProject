@@ -29,7 +29,7 @@ router.post("/register",(req,res)=>{
         email: req.body.email,
         password: hash
     });
-   // console.log(newUser);
+    console.log(newUser);
     newUser.save().then(function(user){
         
         // var token = jwt.sign({userID:user.id, username:user.username},'My dog is the cutest',{expiresIn:'2h'});

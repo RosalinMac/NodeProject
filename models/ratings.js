@@ -8,7 +8,12 @@ var ratingSchema = new mongoose.Schema({
             ref: 'User'
         },
         username: String
+    },
+    campId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Campground'
     }
+
 });
 
 module.exports = mongoose.model("Rating", ratingSchema);
